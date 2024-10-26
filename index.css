@@ -145,19 +145,19 @@ table {
 
 
 
-
 /* Responsive styling for mobile screens */
 @media (max-width: 600px) {
     /* Neon container adjustments */
     .neon-container {
-        width: 100vw;
-        height: 100vh;
+        
+        width: 150vw;
+        height: 150vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        border: none; /* Remove border for a cleaner look */
-        box-shadow: none; /* Remove outer glow */
+         /* Remove border for a cleaner look */
+         /* Remove outer glow */
     }
 
     /* Tic Tac Toe title and icons positioning */
@@ -165,13 +165,12 @@ table {
         margin: 0;
         display: flex;
         flex-direction: column;
-        
     }
 
     /* Title styling adjustments */
     h1 {
-        font-size: 5vw;
-        margin-bottom: 5%;
+        font-size: 10vw;
+        margin-bottom: 10%;
     }
 
     /* Tic Tac Toe board adjustments */
@@ -180,68 +179,44 @@ table {
     }
 
     .cell {
-        width: 20vw;
-        height: 20vw;
-        font-size: 5vw;
-        border: 1px solid #fff; /* Make borders thinner */
+        width: 30vw;
+        height: 30vw;
+        font-size: 8vw;
+        border: 2px solid #fff; /* Thicker borders for better visibility */
     }
 
     /* Scoreboard positioning */
     .score-board {
         display: flex;
         justify-content: space-around;
-        width: 80vw;
-        margin-top: 5vh;
+        width: 95vw;
+        margin-top: 10vh;
     }
 
     .score {
-        font-size: 3vw;
+        font-size: 7vw;
     }
 
     .score-number {
-        font-size: 4vw;
-        margin-top: 0.5vh;
+        font-size: 8vw;
+        margin-top: 1.5vh;
     }
 
     /* Endgame popup adjustments */
     .endgame {
-        font-size: 4vw;
-        padding: 2vw;
-        width: 80vw;
+        font-size: 8vw;
+        padding: 4vw;
+        width: 95vw;
         text-align: center;
-        border-radius: 1vw;
+        border-radius: 2vw;
     }
 
     /* Play again button adjustments */
     .play-again {
-        font-size: 3vw;
-        padding: 1.5vw 3vw;
-        border-width: 0.2vw;
+        font-size: 7vw;
+        padding: 3vw 5vw;
+        border-width: 0.5vw;
     }
 }
 
 
-
-/* Media query for small screens */
-/* @media (max-width: 1200px) {
-    
-
-    .cell {
-        width: 15vw;
-        height: 15vw;
-        font-size: 3.5vw;
-    }
-
-    h1 {
-        font-size: 6vw;
-    }
-
-    h2 {
-        font-size: 4vw;
-    }
-
-    .score-board {
-        flex-direction: column;
-        gap: 2vh;
-    }
-} */
