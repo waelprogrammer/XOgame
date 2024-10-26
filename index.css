@@ -147,15 +147,21 @@ table {
 
 /* Responsive styling for mobile screens */
 @media (max-width: 600px) {
+    body {
+        overflow: hidden; 
+    }
     /* Neon container adjustments */
     .neon-container {
         width: 100vw;
         height: 100svh; /* Full available height on mobile */
         display: flex;
+        padding: 2vh 4vw; 
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        overflow: hidden; /* Prevent scrolling */
+        border: none ;
+    box-shadow:none ;
+         /* Prevent scrolling */
     }
 
     /* Tic Tac Toe title and icons positioning */
@@ -177,13 +183,15 @@ table {
     table {
         margin: 0 auto;
         border-collapse: collapse;
+        width: 75vw;
     }
 
     .cell {
         width: 25vw;
         height: 25vw;
         font-size: 6vw;
-        border: 2px solid #fff; /* Thicker borders for better visibility */
+        
+         /* Thicker borders for better visibility */
     }
 
     /* Scoreboard positioning */
@@ -196,7 +204,7 @@ table {
 
     .score {
         font-size: 5vw;
-        color: #0ff; /* Adjust color to match neon theme */
+         /* Adjust color to match neon theme */
     }
 
     .score-number {
@@ -218,8 +226,7 @@ table {
         font-size: 6vw;
         padding: 3vw 4vw;
         border-width: 0.5vw;
-        color: #0ff; /* Adjust color to match button glow effect */
-        border-color: #0ff; /* Neon border color */
+       /* Neon border color */
     }
 }
 
