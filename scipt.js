@@ -1,6 +1,9 @@
 var origBoard;// original board
-const huPlayer = 'O';
-const aiPlayer = 'X';
+var aiWinCount = 0; // Counter for AI wins
+var playerWinCount = 0; // Counter for Player wins
+let tiecount = 0;
+const huPlayer = 'X';
+const aiPlayer = 'O';
 const winCombos = [
 	[0, 1, 2],
 	[3, 4, 5],
@@ -41,12 +44,44 @@ function turn(squareId, player) {
 }
 
 function checkWin(board, player) {
-	let plays = board.reduce((a, e, i) =>
-		(e === player) ? a.concat(i) : a, []); // way to find every index that the player has played in 
+	let plays = board.reduce((a, e, i) =>// a howeh metel kiss b7et fi al sha8let yalli badi yeha men reduce 
+	(e === player) ? a.concat(i) : a, []); // way to find every index that the player has played in
+	// reduce bte5od kel elment b2alb al array w btef7aso 
+	// hon 7ettayne e 2enno heyeh ya l X ya l O 7asab wen 3am 3ayet lal function 
+	// fa howeh la7 yemshi 3ala kel element bel array 2eza kenet e = X for example la y7et b2alb al a yalli heye array index
+	// a.concat(i) bte3mel merge ben al array ye3ni 2awal marra 7at index 1 teni marra 2 byejma3aon b aaray we7ed 
+	// 2eza e # X for example byetrok al a metel ma heyeh
+	// example : let board = ['X', 'O', 'X', null, 'X', null, null, 'O', null];
+	/*For the board above, the iteration would work like this:
+    At index 0, e is 'X', so plays becomes [0].
+    At index 1, e is 'O', so plays remains [0].
+    At index 2, e is 'X', so plays becomes [0, 2].
+    At index 4, e is 'X', so plays becomes [0, 2, 4].
+    Final plays would be [0, 2, 4], indicating that 'X' played in those positions.*/
+		 
 
 	let gameWon = null;
 	for (let [index, win] of winCombos.entries()) {
 		if (win.every(elem => plays.indexOf(elem) > -1)) { // win = [0,1,2] and index is 0
+			/*Example
+Let’s say plays is [0, 2, 4] and the current win is [0, 1, 2]. Here’s how the check works:
+
+Iteration with every():
+Check for 0: plays.indexOf(0) returns 0 (found), so 0 > -1 is true.
+Check for 1: plays.indexOf(1) returns -1 (not found), so 1 > -1 is false. heyeh haydeh iza ma la2et betredeli -1 la 7ala
+Check for 2: Not checked because every() already returned false.
+Since one element fails the test, every() returns false, and the condition does not execute the block of code within the if.
+
+Example Scenario
+Consider the following:
+
+plays: [0, 1, 2] (indicating player 'X' has played in these positions)
+Current win being checked: [0, 1, 2]
+Check with every():
+For 0: found (true)
+For 1: found (true)
+For 2: found (true)
+Since all elements are found, every() returns true, indicating that the player has won.*/
 			gameWon = {index: index, player: player};// ye3ni 3am nbarem 2eza player 3emel 2aya men al win condition yalli fo2
 			break;
 		}
@@ -58,10 +93,18 @@ function gameOver(gameWon) {
 	for (let index of winCombos[gameWon.index]) {// la7 nfout al kel index yalli 7aslao 3ala al win combo ye3ni yalli reb7o
 		document.getElementById(index).style.backgroundColor =
 			gameWon.player == huPlayer ? "blue" : "red";// 2eza user rebe7 b7et al kel O blue 2eza al ai be7et X kellon red
+			
 	}
 	for (var i = 0; i < cells.length; i++) { // men shen la ba2a fik tef2os 3ala 2aya cell ta tektob
 		cells[i].removeEventListener('click', turnClick, false);
 	}
+	if (gameWon.player == huPlayer) {
+        playerWinCount++; // Increment player win count
+        document.getElementById('playerWins').innerText = playerWinCount; // Update player wins on button
+    } else {
+        aiWinCount++; // Increment AI win count
+        document.getElementById('aiWins').innerText = aiWinCount; // Update AI wins on button
+    }
 	declareWinner(gameWon.player == huPlayer ? "You win!" : "You lose.");// men 7et win or lose 
 }
 
@@ -85,7 +128,9 @@ function checkTie() {
 			cells[i].style.backgroundColor = "green";// 7awelon kellon la green la2an ta3adol
 			cells[i].removeEventListener('click', turnClick, false);// kamen ma t5ali yef2os wala shi
 		}
-		declareWinner("Tie Game!")// 3atayneha tektob tie game ma7al al variable who
+		declareWinner("Tie Game!");// 3atayneha tektob tie game ma7al al variable who
+		tiecount++;
+		document.getElementById('tiecount').innerText ='Tie Games : '+ tiecount;
 		return true;
 	}
 	return false;
@@ -119,6 +164,7 @@ function minimax(newBoard, player) {
 
 		moves.push(move);
 	}
+	
 
 	var bestMove;
 	if(player === aiPlayer) {

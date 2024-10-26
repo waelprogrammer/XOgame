@@ -1,0 +1,49 @@
+/* Neon circle container */
+.neon-container {
+    position: relative;
+    width: 60vw; /* Width set to 60% of the viewport width */
+    height: 80vh; /* Height set to 80% of the viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a2e;
+    border: 0.5vw solid transparent;
+    box-shadow: 
+        0 0 1.5vw #00e6e6, 
+        0 0 2vw #00e6e6, 
+        inset 0 0 1.5vw #ff007f, 
+        inset 0 0 2vw #ff007f;
+}
+
+.neon-container::before, .neon-container::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: 
+        0 0 2vw #00e6e6, 
+        0 0 3vw #00e6e6, 
+        0 0 4vw #ff007f;
+    
+}
+
+
+.decorative-icons {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3vh;
+}
+
+.icon-x, .icon-o {
+    width: 10vw; /* Adjust size as needed */
+    opacity: 0.7; /* Slight transparency */
+}
+
+.icon-x {
+    animation: bounce 2s infinite; /* Add animation */
+}
+
+.icon-o {
+    animation: bounce 2s infinite; /* Add animation */
+}
