@@ -99,6 +99,89 @@ table {
 
 
 
+/* Round End Popup */
+.roundgame {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 230, 230, 0.9); /* Aqua background with transparency */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    padding: 2vw 3vw;
+    border-radius: 1vw;
+    text-align: center;
+    color: #fff;
+    font-size: 3vw;
+    box-shadow: 0 0 2vw #00e6e6, 0 0 4vw #00e6e6;
+    animation: popIn 0.5s ease-out, roundPulse 1.5s infinite alternate, roundGlow 3s infinite alternate;
+    z-index: 9999;
+}
+
+@keyframes roundPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 2vw #00e6e6, 0 0 4vw #00e6e6;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.05);
+        box-shadow: 0 0 3vw #33ffcc, 0 0 6vw #33ffcc; /* Slightly larger glow effect */
+    }
+}
+
+@keyframes roundGlow {
+    0% {
+        color: #99ffee; /* Soft aqua color */
+    }
+    100% {
+        color: #ffffff; /* White color for final text glow */
+    }
+}
+
+/* Play Again Button in .roundgame */
+.round-play-again {
+    display: none;
+    background-color: transparent;
+    color: #fff;
+    padding: 1.5vw 3vw;
+    font-size: 2vw;
+    margin-top: 2vh;
+    border: 0.25vw solid #00e6e6;
+    border-radius: 2vw;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 1vw #00e6e6;
+}
+
+.round-play-again:hover {
+    background-color: #00e6e6;
+    color: #000;
+    box-shadow: 0 0 1.5vw #00e6e6, 0 0 2.5vw #00e6e6;
+}
+.anothergamee {
+    display: none; /* Keep it hidden by default, change as needed */
+    background: linear-gradient(135deg, #00e6e6 0%, #0099cc 100%);
+    color: #fff;
+    padding: 1.5vw 3vw;
+    font-size: 2vw;
+    margin-top: 2vh;
+    border: none; /* Removed border for a cleaner look */
+    border-radius: 2vw;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 1vw rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.2), 0 0 1.5vw rgba(0, 0, 0, 0.15);
+}
+
+.anothergamee:hover {
+    background: linear-gradient(135deg, #0099cc 0%, #00e6e6 100%);
+    color: #000;
+    box-shadow: 0 0 1.5vw #00e6e6, 0 0 3vw #00e6e6;
+    transform: scale(1.05); /* Slight scaling effect on hover */
+}
+
+.anothergamee:active {
+    transform: scale(0.95); /* Press effect */
+}
 
 
 
@@ -123,6 +206,10 @@ table {
     animation: popIn 0.5s ease-out, pulse 1.5s infinite alternate, glow 3s infinite alternate;
     z-index: 9999;
 }
+
+
+
+
 
 @keyframes popIn {
     0% {
@@ -154,6 +241,9 @@ table {
         color: #ffffff;
     }
 }
+
+
+
 
 
 /* Play again button styling */
@@ -251,8 +341,7 @@ table {
     .cell {
         width: 25vw;
         height: 25vw;
-        font-size: 6vw;
-        
+       
          /* Thicker borders for better visibility */
     }
 

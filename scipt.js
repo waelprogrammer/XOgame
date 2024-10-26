@@ -17,9 +17,20 @@ const winCombos = [
 
 const cells = document.querySelectorAll('.cell');
 startGame();
+function anothergame()
+{
+	document.querySelector(".roundgame").style.display = "none";
+	origBoard = Array.from(Array(9).keys());
+	for (var i = 0; i < cells.length; i++) {
+		cells[i].innerText = '';
+		cells[i].style.removeProperty('background-color');
+		cells[i].addEventListener('click', turnClick, false);
+	}
 
+}
 function startGame() {
 	document.querySelector(".endgame").style.display = "none";
+	
 	origBoard = Array.from(Array(9).keys());
 	for (var i = 0; i < cells.length; i++) {
 		cells[i].innerText = '';
@@ -107,11 +118,30 @@ function gameOver(gameWon) {
 	if (gameWon.player == huPlayer) {
         playerWinCount++; // Increment player win count
         document.getElementById('playerWins').innerText = playerWinCount; // Update player wins on button
+		if (playerWinCount === 10) {
+			declarewingame("You Win!!! the game");
+		}
     } else {
         aiWinCount++; // Increment AI win count
         document.getElementById('aiWins').innerText = aiWinCount; // Update AI wins on button
+		if (aiWinCount === 2) {
+			declarewingame("You lose the game");
+			document.querySelector(".anothergamee").style.display = "inline-block";// yezhor al moraba3
+			document.querySelector(".anothergamee").innerHTML = "Play another match"; 
+	
+
+		}
     }
+	if(playerWinCount<2 && aiWinCount<2){
 	declareWinner(gameWon.player == huPlayer ? "You win!" : "You lose.");// men 7et win or lose 
+	}
+}
+
+function declarewingame(who)
+{
+	document.querySelector(".roundgame").style.display = "block";// yezhor al moraba3 
+	document.querySelector(".roundgame .text2").innerText = who;// yektob b2alb al moraba3 min rebe7
+
 }
 
 function declareWinner(who) {
