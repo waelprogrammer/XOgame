@@ -149,15 +149,13 @@ table {
 @media (max-width: 600px) {
     /* Neon container adjustments */
     .neon-container {
-        
-        width: 150vw;
-        height: 150vh;
+        width: 100vw;
+        height: 100svh; /* Full available height on mobile */
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-         /* Remove border for a cleaner look */
-         /* Remove outer glow */
+        overflow: hidden; /* Prevent scrolling */
     }
 
     /* Tic Tac Toe title and icons positioning */
@@ -165,58 +163,65 @@ table {
         margin: 0;
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 
     /* Title styling adjustments */
     h1 {
-        font-size: 10vw;
-        margin-bottom: 10%;
+        font-size: 8vw;
+        margin-bottom: 5vh;
+         /* Adjust color if needed to match neon effect */
     }
 
     /* Tic Tac Toe board adjustments */
     table {
         margin: 0 auto;
+        border-collapse: collapse;
     }
 
     .cell {
-        width: 30vw;
-        height: 30vw;
-        font-size: 8vw;
+        width: 25vw;
+        height: 25vw;
+        font-size: 6vw;
         border: 2px solid #fff; /* Thicker borders for better visibility */
     }
 
     /* Scoreboard positioning */
     .score-board {
         display: flex;
-        justify-content: space-around;
-        width: 95vw;
-        margin-top: 10vh;
+        justify-content: space-between;
+        width: 80vw;
+        margin-top: 5vh;
     }
 
     .score {
-        font-size: 7vw;
+        font-size: 5vw;
+        color: #0ff; /* Adjust color to match neon theme */
     }
 
     .score-number {
-        font-size: 8vw;
-        margin-top: 1.5vh;
+        font-size: 6vw;
+        margin-top: 1vh;
     }
 
     /* Endgame popup adjustments */
     .endgame {
-        font-size: 8vw;
-        padding: 4vw;
-        width: 95vw;
+        font-size: 6vw;
+        padding: 3vw;
+        width: 90vw;
         text-align: center;
         border-radius: 2vw;
     }
 
     /* Play again button adjustments */
     .play-again {
-        font-size: 7vw;
-        padding: 3vw 5vw;
+        font-size: 6vw;
+        padding: 3vw 4vw;
         border-width: 0.5vw;
+        color: #0ff; /* Adjust color to match button glow effect */
+        border-color: #0ff; /* Neon border color */
     }
 }
+
 
 
