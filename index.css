@@ -17,14 +17,17 @@ body {
 
 /* Neon circle container */
 .neon-container {
+
+
+   
     position: relative;
-    width: 60vw; /* Width set to 60% of the viewport width */
-    height: 80vh; /* Height set to 80% of the viewport height */
+    width: 70vw; /* Width set to 60% of the viewport width */
+    height: 90vh; /* Height set to 80% of the viewport height */
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #1a1a2e;
-    border: 0.5vw solid transparent;
+    border: 0.5vw solid ;
     box-shadow: 
         0 0 1.5vw #00e6e6, 
         0 0 2vw #00e6e6, 
@@ -35,7 +38,7 @@ body {
 .xogame {
     display: flex;
     flex-direction: column;
-    margin-right: 3vw;
+    margin-right: 10vw;
 }
 
 /* Title styling */
@@ -116,7 +119,7 @@ table {
 .score-board {
     display: flex;
     justify-content: space-around;
-    margin-top: 2vh;
+    margin-top: 5vh;
 }
 
 .score {
@@ -143,10 +146,84 @@ table {
 
 
 
+/* Responsive styling for mobile screens */
+@media (max-width: 600px) {
+    /* Neon container adjustments */
+    .neon-container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: none; /* Remove border for a cleaner look */
+        box-shadow: none; /* Remove outer glow */
+    }
+
+    /* Tic Tac Toe title and icons positioning */
+    .xogame {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Title styling adjustments */
+    h1 {
+        font-size: 5vw;
+        margin-bottom: 5%;
+    }
+
+    /* Tic Tac Toe board adjustments */
+    table {
+        margin: 0 auto;
+    }
+
+    .cell {
+        width: 20vw;
+        height: 20vw;
+        font-size: 5vw;
+        border: 1px solid #fff; /* Make borders thinner */
+    }
+
+    /* Scoreboard positioning */
+    .score-board {
+        display: flex;
+        justify-content: space-around;
+        width: 80vw;
+        margin-top: 5vh;
+    }
+
+    .score {
+        font-size: 3vw;
+    }
+
+    .score-number {
+        font-size: 4vw;
+        margin-top: 0.5vh;
+    }
+
+    /* Endgame popup adjustments */
+    .endgame {
+        font-size: 4vw;
+        padding: 2vw;
+        width: 80vw;
+        text-align: center;
+        border-radius: 1vw;
+    }
+
+    /* Play again button adjustments */
+    .play-again {
+        font-size: 3vw;
+        padding: 1.5vw 3vw;
+        border-width: 0.2vw;
+    }
+}
+
 
 
 /* Media query for small screens */
-@media (max-width: 600px) {
+/* @media (max-width: 1200px) {
     
 
     .cell {
@@ -167,4 +244,4 @@ table {
         flex-direction: column;
         gap: 2vh;
     }
-}
+} */
