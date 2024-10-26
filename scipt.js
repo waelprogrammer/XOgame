@@ -90,11 +90,17 @@ Since all elements are found, every() returns true, indicating that the player h
 }
 
 function gameOver(gameWon) {
-	for (let index of winCombos[gameWon.index]) {// la7 nfout al kel index yalli 7aslao 3ala al win combo ye3ni yalli reb7o
-		document.getElementById(index).style.backgroundColor =
-			gameWon.player == huPlayer ? "blue" : "red";// 2eza user rebe7 b7et al kel O blue 2eza al ai be7et X kellon red
-			
+	for (let index of winCombos[gameWon.index]) {
+		const cell = document.getElementById(index);
+	cell.style.backgroundColor = gameWon.player == huPlayer ? "#d1c4e9" : "#008080";
+		cell.style.fontSize = "4vw"; // Keep the original font size for the cell
+		cell.style.transition = "background-color 0.3s ease-in-out"; // Smooth transition for cell background
+	
+		// Wrap the symbol with a span for targeted animation
+		const symbol = cell.innerText;
+		cell.innerHTML = `<span class="dynamic-symbol">${symbol}</span>`;
 	}
+	
 	for (var i = 0; i < cells.length; i++) { // men shen la ba2a fik tef2os 3ala 2aya cell ta tektob
 		cells[i].removeEventListener('click', turnClick, false);
 	}
@@ -125,12 +131,12 @@ function bestSpot() {
 function checkTie() {
 	if (emptySquares().length == 0) { // 2eza kellon ma 3atouni number ma3neton kello melyenin bel X wel O ye3ni ta3adol
 		for (var i = 0; i < cells.length; i++) {
-			cells[i].style.backgroundColor = "green";// 7awelon kellon la green la2an ta3adol
+			cells[i].style.backgroundColor = "#008080";// 7awelon kellon la green la2an ta3adol
 			cells[i].removeEventListener('click', turnClick, false);// kamen ma t5ali yef2os wala shi
 		}
 		declareWinner("Tie Game!");// 3atayneha tektob tie game ma7al al variable who
 		tiecount++;
-		document.getElementById('tiecount').innerText ='Tie Games : '+ tiecount;
+		document.getElementById('tiecount').innerText =tiecount;
 		return true;
 	}
 	return false;

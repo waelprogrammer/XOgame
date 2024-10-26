@@ -79,21 +79,82 @@ table {
     box-shadow: 0 0 1vw #ff007f;
 }
 
+
+
+@keyframes rotateSymbol {
+    0% { transform: scale(1) rotateY(0deg); }
+    50% { transform: scale(1.1) rotateY(180deg); } /* Slightly enlarge and rotate */
+    100% { transform: scale(1) rotateY(360deg); } /* Full rotation back to original size */
+}
+
+/* Apply the animation only to the winning symbol */
+.dynamic-symbol {
+    display: inline-block;
+    animation: rotateSymbol 1.5s infinite;
+    font-weight: bold; /* Make the symbol bold */
+    text-shadow: 0 0 0.8vw #ff007f, 0 0 1vw rgba(255, 0, 127, 0.8); /* Neon glow effect for "O" */
+    font-size: 4vw; /* Keep the original font size */
+    perspective: 1000px; /* Add perspective for 3D effect */
+}
+
+
+
+
+
+
+
+
+
+
 /* End game popup */
 .endgame {
     display: none;
     position: absolute;
     background-color: rgba(255, 0, 127, 0.9);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 2vw;
+    top: 20%;
+    left: 25%;
+    transform: translate(-50%, -50%) scale(1);
+    padding: 2vw 3vw;
     border-radius: 1vw;
     text-align: center;
     color: white;
-    font-size: 2.5vw;
-    box-shadow: 0 0 1.5vw #ff007f, 0 0 2.5vw #ff007f;
+    font-size: 3vw;
+    box-shadow: 0 0 2vw #ff007f, 0 0 4vw #ff007f;
+    animation: popIn 0.5s ease-out, pulse 1.5s infinite alternate, glow 3s infinite alternate;
+    z-index: 9999;
 }
+
+@keyframes popIn {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 2vw #ff007f, 0 0 4vw #ff007f;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.05);
+        box-shadow: 0 0 3vw #ff33aa, 0 0 6vw #ff33aa;
+    }
+}
+
+@keyframes glow {
+    0% {
+        color: #ff99cc;
+    }
+    100% {
+        color: #ffffff;
+    }
+}
+
 
 /* Play again button styling */
 .play-again {
@@ -108,6 +169,7 @@ table {
     transition: all 0.3s ease;
     text-shadow: 0 0 1vw #00e6e6;
 }
+
 
 .play-again:hover {
     background-color: #00e6e6;
@@ -200,6 +262,7 @@ table {
         justify-content: space-between;
         width: 80vw;
         margin-top: 5vh;
+        
     }
 
     .score {
@@ -216,6 +279,8 @@ table {
     .endgame {
         font-size: 6vw;
         padding: 3vw;
+        top: 8%;
+        left: 50%;
         width: 90vw;
         text-align: center;
         border-radius: 2vw;
