@@ -152,6 +152,42 @@ table {
     text-shadow: 0 0 1vw #00e6e6;
 }
 
+
+
+
+
+
+
+
+
+
+.game-end-message {
+    position: absolute; /* Allow positioning within the neon circle */
+    top: 65%; /* Adjust as needed to place it within the neon circle */
+    left: 25%; /* Center it horizontally */
+    transform: translate(-50%, -50%); /* Center it properly */
+    font-size: 1vw; /* Responsive font size */
+    color: #ffffff; /* Neon pink color */
+    text-shadow: 0 0 0.8vw #ff007f, 0 0 0.5vw #ff007f;
+    
+    /* Semi-transparent background */
+    padding: 1vw 2vw; /* Padding for better spacing */
+     /* Rounded corners */
+     /* Ensure it appears above other elements */
+    text-align: center; /* Center align the text */
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .round-play-again:hover {
     background-color: #00e6e6;
     color: #000;
@@ -362,6 +398,15 @@ table {
     .score-number {
         font-size: 6vw;
         margin-top: 1vh;
+    }
+
+    .game-end-message {
+         /* Allow positioning within the neon circle */
+        top: 95%; /* Adjust as needed to place it within the neon circle */
+        left: 50%; /* Center it horizontally */
+        font-size: 4vw;
+        white-space: nowrap;
+       
     }
 
     /* Endgame popup adjustments */
