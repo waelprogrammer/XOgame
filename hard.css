@@ -358,10 +358,7 @@ table {
 
 /* Responsive styling for mobile screens */
 @media (max-width: 600px) {
-    body {
-        overflow: hidden; 
-    }
-    /* Neon container adjustments */
+   /* Neon container adjustments */
     .neon-container {
         width: 100vw;
         height: 100svh; /* Full available height on mobile */
