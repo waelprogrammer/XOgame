@@ -93,6 +93,12 @@ function gameOver(gameWon) {
 		const cell = document.getElementById(index);
 		cell.style.backgroundColor = gameWon.player == player1 ? "#008080" : "#008080";
 		cell.style.transition = "background-color 0.3s ease-in-out";
+		// Wrap the symbol with a span for targeted animation
+		const symbol = cell.innerText;
+		cell.innerHTML = `<span class="dynamic-symbol">${symbol}</span>`;
+
+
+
 	}
 	for (var i = 0; i < cells.length; i++) {
 		cells[i].removeEventListener('click', turnClick, false);
@@ -101,17 +107,17 @@ function gameOver(gameWon) {
 		player1WinCount++;
 		document.getElementById('player1wins').innerText = player1WinCount;
 		if (player1WinCount === 5) {
-			declarewingame("Player 1 Wins the Game!");
+			declarewingame("X Win the Game!");
 		}
 	} else {
 		player2WinCount++;
 		document.getElementById('player2wins').innerText = player2WinCount;
 		if (player2WinCount === 5) {
-			declarewingame("Player 2 Wins the Game!");
+			declarewingame("O Win the Game!");
 		}
 	}
-	if (player1WinCount < 5 && player2WinCount < 5) {
-		declareWinner(gameWon.player == player1 ? "Player 1 Wins!" : "Player 2 Wins!");
+	if (player1WinCount < 2 && player2WinCount < 5) {
+		declareWinner(gameWon.player == player1 ? "X Wins!" : "O Wins!");
 	}
 }
 
