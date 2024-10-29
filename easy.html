@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+  
+  <link rel="stylesheet" href="hard.css">
+  
+</head>
+<body>
+ 
+  <div class="neon-container"> <!-- Added neon container -->
+    <a href="index.html" class="home-icon">
+      <i class="fas fa-home"></i>
+    </a>
+    <a class="sound-icon" onclick="toggleSound()">
+      <i class="fas fa-volume-up"></i>
+    </a>
+    
+    <div class="xogame">
+      <h1>XO Game</h1>
+      <button onClick="startGame()" class="play-again">Play Again</button>
+      
+    </div>
+    <h2 class="game-end-message">Note: After 5 Wins, the game will end.</h2>
+
+      <div class="game">
+        <table>
+          <tr>
+            <td class="cell" id="0"></td>
+            <td class="cell" id="1"></td>
+            <td class="cell" id="2"></td>
+          </tr>
+          <tr>
+            <td class="cell" id="3"></td>
+            <td class="cell" id="4"></td>
+            <td class="cell" id="5"></td>
+          </tr>
+          <tr>
+            <td class="cell" id="6"></td>
+            <td class="cell" id="7"></td>
+            <td class="cell" id="8"></td>
+          </tr>
+        </table>
+        <div class="score-board">
+          <span class="score player1-score">
+            (X)
+            <span id="playerwins" class="score-number">0</span>
+          </span>
+          <span class="score tie-score">
+            TIE
+            <span id="tiecount" class="score-number">0</span>
+          </span>
+          <span  class="score player2-score">
+            (O)
+            <span id="aiWins" class="score-number">0</span>
+          </span>
+        </div>
+      </div>
+      <div class="endgame">
+        <div class="text"></div>
+      </div>
+      <div class="roundgame">
+        <div class="text2"></div>
+        <button class="anothergamee" onclick="anothergame()">Play another game</button>
+      </div>
+      
+    
+  </div> <!-- End of neon container -->
+  
+  <script src="easy.js"></script>
+</body>
+</html>
