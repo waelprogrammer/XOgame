@@ -1,433 +1,123 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styling */
+/* Body styling with background image */
 body {
     font-family: 'Arial', sans-serif;
     height: 100vh;
-    background-color: #1a1a2e; /* Dark background color */
+    background: url('https://img.freepik.com/premium-vector/xoxo-lettering-sign-neon-vector-template_598561-3175.jpg?w=1060') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
 }
 
-/* Neon circle container */
-.neon-container {
-
-
-   
-    position: relative;
-    width: 70vw; /* Width set to 60% of the viewport width */
-    height: 90vh; /* Height set to 80% of the viewport height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1a1a2e;
-    border: 0.5vw solid ;
-    box-shadow: 
-        0 0 1.5vw #00e6e6, 
-        0 0 2vw #00e6e6, 
-        inset 0 0 1.5vw #ff007f, 
-        inset 0 0 2vw #ff007f;
-}
-
-.xogame {
-    display: flex;
-    flex-direction: column;
-    margin-right: 10vw;
+/* Main container centered */
+.container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.75); /* Dark transparent background */
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    width: 90%;
+    max-width: 500px;
 }
 
 /* Title styling */
 h1 {
-    font-size: 4vw;
-    margin-bottom: 10%;
-    text-shadow: 0 0 0.8vw #ff007f, 0 0 1.5vw #ff007f;
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f; /* Neon pink shadow */
 }
 
-/* Game mode heading */
+/* Game Mode selection heading */
 h2 {
-    font-size: 2.5vw;
-    margin-bottom: 2vh;
-    text-shadow: 0 0 0.8vw #00e6e6, 0 0 1.5vw #00e6e6;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00e6e6, 0 0 20px #00e6e6; /* Neon blue shadow */
 }
 
-/* Tic Tac Toe board styling */
-table {
-    border-collapse: collapse;
-    margin: 0 auto;
-}
-
-.cell {
-    width: 8vw;
-    height: 8vw;
-    font-size: 4vw;
-    color: #fff;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    border: 0.25vw solid #00e6e6;
-    transition: all 0.3s ease;
-    text-shadow: 0 0 0.8vw #ff007f;
-}
-
-.cell:hover {
-    background-color: rgba(255, 0, 127, 0.2);
-    box-shadow: 0 0 1vw #ff007f;
-}
-
-
-
-@keyframes rotateSymbol {
-    0% { transform: scale(1) rotateY(0deg); }
-    50% { transform: scale(1.1) rotateY(180deg); } /* Slightly enlarge and rotate */
-    100% { transform: scale(1) rotateY(360deg); } /* Full rotation back to original size */
-}
-
-/* Apply the animation only to the winning symbol */
-.dynamic-symbol {
+/* Player Mode buttons */
+.btn-mode {
     display: inline-block;
-    animation: rotateSymbol 1.5s infinite;
-    font-weight: bold; /* Make the symbol bold */
-    text-shadow: 0 0 0.8vw #ff007f, 0 0 1vw rgba(255, 0, 127, 0.8); /* Neon glow effect for "O" */
-    font-size: 4vw; /* Keep the original font size */
-    perspective: 1000px; /* Add perspective for 3D effect */
-}
-
-
-
-/* Round End Popup */
-.roundgame {
-    display: none;
-    position: absolute;
-    background-color: rgba(0, 230, 230, 0.9); /* Aqua background with transparency */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    padding: 2vw 3vw;
-    border-radius: 1vw;
-    text-align: center;
-    color: #fff;
-    font-size: 3vw;
-    box-shadow: 0 0 2vw #00e6e6, 0 0 4vw #00e6e6;
-    animation: popIn 0.5s ease-out, roundPulse 1.5s infinite alternate, roundGlow 3s infinite alternate;
-    z-index: 9999;
-}
-
-@keyframes roundPulse {
-    0% {
-        transform: translate(-50%, -50%) scale(1);
-        box-shadow: 0 0 2vw #00e6e6, 0 0 4vw #00e6e6;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1.05);
-        box-shadow: 0 0 3vw #33ffcc, 0 0 6vw #33ffcc; /* Slightly larger glow effect */
-    }
-}
-
-@keyframes roundGlow {
-    0% {
-        color: #99ffee; /* Soft aqua color */
-    }
-    100% {
-        color: #ffffff; /* White color for final text glow */
-    }
-}
-
-/* Play Again Button in .roundgame */
-.round-play-again {
-    display: none;
+    padding: 15px 30px;
+    margin: 15px;
+    font-size: 1.5rem;
     background-color: transparent;
     color: #fff;
-    padding: 1.5vw 3vw;
-    font-size: 2vw;
-    margin-top: 2vh;
-    border: 0.25vw solid #00e6e6;
-    border-radius: 2vw;
+    border: 2px solid #00e6e6;
+    border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-shadow: 0 0 1vw #00e6e6;
+    text-shadow: 0 0 10px #00e6e6;
 }
 
-
-
-
-
-
-
-
-
-
-.game-end-message {
-    position: absolute; /* Allow positioning within the neon circle */
-    top: 65%; /* Adjust as needed to place it within the neon circle */
-    left: 25%; /* Center it horizontally */
-    transform: translate(-50%, -50%); /* Center it properly */
-    font-size: 1vw; /* Responsive font size */
-    color: #ffffff; /* Neon pink color */
-    text-shadow: 0 0 0.8vw #ff007f, 0 0 0.5vw #ff007f;
-    
-    /* Semi-transparent background */
-    padding: 1vw 2vw; /* Padding for better spacing */
-     /* Rounded corners */
-     /* Ensure it appears above other elements */
-    text-align: center; /* Center align the text */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-.round-play-again:hover {
+.btn-mode:hover {
     background-color: #00e6e6;
     color: #000;
-    box-shadow: 0 0 1.5vw #00e6e6, 0 0 2.5vw #00e6e6;
-}
-.anothergamee {
-    display: none; /* Keep it hidden by default, change as needed */
-    background: linear-gradient(135deg, #00e6e6 0%, #0099cc 100%);
-    color: #fff;
-    padding: 1.5vw 3vw;
-    font-size: 2vw;
-    margin-top: 2vh;
-    border: none; /* Removed border for a cleaner look */
-    border-radius: 2vw;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-shadow: 0 0 1vw rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.2), 0 0 1.5vw rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 15px #00e6e6, 0 0 30px #00e6e6; /* Neon glow */
 }
 
-.anothergamee:hover {
-    background: linear-gradient(135deg, #0099cc 0%, #00e6e6 100%);
-    color: #000;
-    box-shadow: 0 0 1.5vw #00e6e6, 0 0 3vw #00e6e6;
-    transform: scale(1.05); /* Slight scaling effect on hover */
+/* One Player title */
+.one-player-section h3 {
+    font-size: 1.8rem;
+    margin: 30px 0 10px 0;
+    text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f; /* Neon pink shadow */
 }
 
-.anothergamee:active {
-    transform: scale(0.95); /* Press effect */
-}
-
-
-
-
-
-
-
-/* End game popup */
-.endgame {
-    display: none;
-    position: absolute;
-    background-color: rgba(255, 0, 127, 0.9);
-    top: 20%;
-    left: 25%;
-    transform: translate(-50%, -50%) scale(1);
-    padding: 2vw 3vw;
-    border-radius: 1vw;
-    text-align: center;
-    color: white;
-    font-size: 3vw;
-    box-shadow: 0 0 2vw #ff007f, 0 0 4vw #ff007f;
-    animation: popIn 0.5s ease-out, pulse 1.5s infinite alternate, glow 3s infinite alternate;
-    z-index: 9999;
-}
-
-
-
-
-
-@keyframes popIn {
-    0% {
-        transform: translate(-50%, -50%) scale(0.5);
-        opacity: 0;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes pulse {
-    0% {
-        transform: translate(-50%, -50%) scale(1);
-        box-shadow: 0 0 2vw #ff007f, 0 0 4vw #ff007f;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1.05);
-        box-shadow: 0 0 3vw #ff33aa, 0 0 6vw #ff33aa;
-    }
-}
-
-@keyframes glow {
-    0% {
-        color: #ff99cc;
-    }
-    100% {
-        color: #ffffff;
-    }
-}
-
-
-
-
-
-/* Play again button styling */
-.play-again {
-    background-color: transparent;
-    color: #fff;
-    padding: 1vw 2vw;
-    font-size: 1.5vw;
-    margin-bottom: 2vh;
-    border: 0.25vw solid #00e6e6;
-    border-radius: 2vw;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-shadow: 0 0 1vw #00e6e6;
-}
-
-
-.play-again:hover {
-    background-color: #00e6e6;
-    color: #000;
-    box-shadow: 0 0 1.5vw #00e6e6, 0 0 2.5vw #00e6e6;
-}
-
-/* Scoreboard styling */
-.score-board {
+/* Difficulty buttons styling */
+.difficulty-buttons {
     display: flex;
-    justify-content: space-around;
-    margin-top: 5vh;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 10px;
 }
 
-.score {
-    padding: 1vw 2vw;
-    font-size: 1.4vw;
+.difficulty {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: transparent;
     color: #fff;
-    border-radius: 1vw;
-    box-shadow: 0 0 1vw #00e6e6;
-    text-align: center; /* Center-align text */
+    border: 2px solid #ff007f; /* Neon pink border */
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px #ff007f;
 }
 
-/* Player scores */
-.player1-score, .player2-score, .tie-score {
-    text-shadow: 0 0 0.8vw #ff007f;
+.difficulty:hover {
+    background-color: #ff007f;
+    color: #000;
+    box-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f; /* Neon glow */
 }
 
-/* Score number styling */
-.score-number {
-    display: block; /* Ensure it appears on a new line */
-    font-size: 2vw; /* Make it bigger */
-    margin-top: 1vh; /* Add some space above the score */
-}
-
-
-
-/* Responsive styling for mobile screens */
+/* Responsive adjustments for smaller screens */
 @media (max-width: 600px) {
-    body {
-        overflow: hidden; 
-    }
-    /* Neon container adjustments */
-    .neon-container {
-        width: 100vw;
-        height: 100svh; /* Full available height on mobile */
-        display: flex;
-        padding: 2vh 4vw; 
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border: none ;
-    box-shadow:none ;
-         /* Prevent scrolling */
+    .container {
+        padding: 20px 15px;
     }
 
-    /* Tic Tac Toe title and icons positioning */
-    .xogame {
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /* Title styling adjustments */
     h1 {
-        font-size: 8vw;
-        margin-bottom: 5vh;
-         /* Adjust color if needed to match neon effect */
+        font-size: 2.2rem;
     }
 
-    /* Tic Tac Toe board adjustments */
-    table {
-        margin: 0 auto;
-        border-collapse: collapse;
-        width: 75vw;
+    h2, .one-player-section h3 {
+        font-size: 1.5rem;
     }
 
-    .cell {
-        width: 25vw;
-        height: 25vw;
-       
-         /* Thicker borders for better visibility */
+    .btn-mode, .difficulty {
+        font-size: 1.2rem;
+        padding: 10px 20px;
     }
 
-    /* Scoreboard positioning */
-    .score-board {
-        display: flex;
-        justify-content: space-between;
-        width: 80vw;
-        margin-top: 5vh;
-        
-    }
-
-    .score {
-        font-size: 5vw;
-         /* Adjust color to match neon theme */
-    }
-
-    .score-number {
-        font-size: 6vw;
-        margin-top: 1vh;
-    }
-
-    .game-end-message {
-         /* Allow positioning within the neon circle */
-        top: 95%; /* Adjust as needed to place it within the neon circle */
-        left: 50%; /* Center it horizontally */
-        font-size: 4vw;
-        white-space: nowrap;
-       
-    }
-
-    /* Endgame popup adjustments */
-    .endgame {
-        font-size: 6vw;
-        padding: 3vw;
-        top: 8%;
-        left: 50%;
-        width: 90vw;
-        text-align: center;
-        border-radius: 2vw;
-    }
-
-    /* Play again button adjustments */
-    .play-again {
-        font-size: 6vw;
-        padding: 3vw 4vw;
-        border-width: 0.5vw;
-       /* Neon border color */
+    .difficulty-buttons {
+        flex-direction: column;
+        gap: 15px;
     }
 }
-
-
-

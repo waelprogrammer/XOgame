@@ -112,7 +112,7 @@ function gameOver(gameWon) {
 	for (let index of winCombos[gameWon.index]) {
 		const cell = document.getElementById(index);
 	cell.style.backgroundColor = gameWon.player == huPlayer ? "#d1c4e9" : "#008080";
-		cell.style.fontSize = "4vw"; // Keep the original font size for the cell
+		
 		cell.style.transition = "background-color 0.3s ease-in-out"; // Smooth transition for cell background
 	
 		// Wrap the symbol with a span for targeted animation
@@ -134,6 +134,7 @@ function gameOver(gameWon) {
         document.getElementById('aiWins').innerText = aiWinCount; // Update AI wins on button
 		if (aiWinCount === 5) {
 			declarewingame("You lose the game");
+			
 			document.querySelector(".anothergamee").style.display = "inline-block";// yezhor al moraba3
 			document.querySelector(".anothergamee").innerHTML = "Play another match"; 
 	
