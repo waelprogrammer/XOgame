@@ -374,29 +374,13 @@ table {
     box-shadow:none ;
          /* Prevent scrolling */
     }
-    .home-container
-    {
-        position: absolute;
-        top: 51%; /* Adjust as needed */
-        left: 2vw;
-
-    }
-
+    
     .home-icon {
-        position: absolute;
-        top: 51%; /* Adjust as needed */
-        left: 2vw; /* Adjust as needed */
-        font-size: 3vw; /* Icon size */
-        color: #00e6e6; /* Neon blue color */
-        text-shadow: 0 0 0.8vw #ff007f, 0 0 1vw #00e6e6; /* Neon glow effect */
-        transition: transform 0.3s ease;
+        font-size: 8vw; /* Icon size */
     }
-    
-    .home-icon:hover {
-        transform: scale(1.1); /* Slightly enlarge on hover */
+    .sound-icon {
+        font-size: 8vw; /* Icon size */
     }
-    
-
     /* Tic Tac Toe title and icons positioning */
     .xogame {
         margin: 0;
