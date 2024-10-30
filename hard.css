@@ -420,7 +420,7 @@ table {
 
     .game-end-message {
          /* Allow positioning within the neon circle */
-        top: 95%; /* Adjust as needed to place it within the neon circle */
+        top: 5%; /* Adjust as needed to place it within the neon circle */
         left: 50%; /* Center it horizontally */
         font-size: 4vw;
         white-space: nowrap;
