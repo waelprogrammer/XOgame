@@ -2,6 +2,11 @@ var origBoard;
 var aiWinCount = 0;
 var playerWinCount = 0;
 let tiecount = 0;
+let isMuted = false; // Variable to track sound state
+const xSound = document.getElementById('xSound');
+const oSound = document.getElementById('oSound');
+const winSound = document.getElementById('winSound');
+const failSound = document.getElementById('failSound');
 const huPlayer = 'X';
 const aiPlayer = 'O';
 const winCombos = [
@@ -17,6 +22,35 @@ const winCombos = [
 
 const cells = document.querySelectorAll('.cell');
 startGame();
+
+
+
+function toggleSound() {
+    isMuted = !isMuted; // Toggle the sound state
+
+    const soundIcon = document.getElementById('soundIcon');
+
+    // Change the icon based on the mute state
+    if (isMuted) {
+        soundIcon.classList.remove('fa-volume-up'); // Remove sound on icon
+        soundIcon.classList.add('fa-volume-mute'); // Add mute icon
+        // Mute all sounds
+        winSound.muted = true;
+        failSound.muted = true;
+        xSound.muted = true;
+        oSound.muted = true;
+    } else {
+        soundIcon.classList.remove('fa-volume-mute'); // Remove mute icon
+        soundIcon.classList.add('fa-volume-up'); // Add sound on icon
+        // Unmute all sounds
+        winSound.muted = false;
+        failSound.muted = false;
+        xSound.muted = false;
+        oSound.muted = false;
+    }
+}
+
+
 
 function anothergame() {
 	document.querySelector(".roundgame").style.display = "none";
@@ -47,6 +81,7 @@ function startGame() {
 function turnClick(square) {
 	if (typeof origBoard[square.target.id] == 'number') {
 		turn(square.target.id, huPlayer);
+		
 		if (!checkWin(origBoard, huPlayer) && !checkTie()) turn(bestSpot(), aiPlayer);
 	}
 }
@@ -54,6 +89,10 @@ function turnClick(square) {
 function turn(squareId, player) {
 	origBoard[squareId] = player;
 	document.getElementById(squareId).innerText = player;
+	// Play sound based on the player
+    if (player === huPlayer) {
+        xSound.play(); // Play 'X' sound
+    }
 	let gameWon = checkWin(origBoard, player);
 	if (gameWon) gameOver(gameWon);
 }
@@ -86,18 +125,25 @@ function gameOver(gameWon) {
 		document.getElementById('playerwins').innerText = playerWinCount;
 		if (playerWinCount === 5) {
 			declarewingame("You Win!!! the game");
+			winSound.play();
 		}
 	} else {
 		aiWinCount++;
 		document.getElementById('aiWins').innerText = aiWinCount;
 		if (aiWinCount === 5) {
 			declarewingame("You lose the game");
+			failSound.play();
 			document.querySelector(".anothergamee").style.display = "inline-block";
 			document.querySelector(".anothergamee").innerHTML = "Play another match";
 		}
 	}
 	if (playerWinCount < 5 && aiWinCount < 5) {
 		declareWinner(gameWon.player == huPlayer ? "You win!" : "You lose.");
+		if (gameWon.player == huPlayer) {
+            winSound.play(); // Play you win sound for intermediate wins
+        } else {
+            failSound.play(); // Play you lose sound for intermediate losses
+        }
 	}
 }
 

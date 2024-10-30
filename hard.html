@@ -2,7 +2,8 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Tic Tac Toe</title>
+  <link rel="icon" type="image/png" href="images/xo logo.webp">
+    <title>XO Game</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -12,14 +13,19 @@
   
 </head>
 <body>
+  <audio id="xSound" src="sounds/506052__mellau__button-click-3.wav"></audio>
+<audio id="oSound" src="sounds/506053__mellau__button-click-2.wav"></audio>
+<audio id="winSound" src="sounds/victorymale-version-230553.mp3"></audio>
+<audio id="failSound" src="sounds/you-lose-game-sound-230514.mp3"></audio>
+
  
   <div class="neon-container"> <!-- Added neon container -->
     <a href="index.html" class="home-icon">
       <i class="fas fa-home"></i>
     </a>
     <a class="sound-icon" onclick="toggleSound()">
-      <i class="fas fa-volume-up"></i>
-    </a>
+      <i class="fas fa-volume-up" id="soundIcon"></i>
+  </a>
     
     <div class="xogame">
       <h1>XO Game</h1>

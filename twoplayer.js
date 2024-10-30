@@ -2,6 +2,11 @@ let origBoard; // Original board
 var player1WinCount = 0; // Counter for Player 1 wins
 var player2WinCount = 0; // Counter for Player 2 wins
 var tieCount = 0;
+let isMuted = false; // Variable to track sound state
+const xSound = document.getElementById('xSound');
+const oSound = document.getElementById('oSound');
+const winSound = document.getElementById('winSound');
+const failSound = document.getElementById('failSound');
 const player1 = 'X';
 const player2 = 'O';
 let currentPlayer = player1; // Start with Player 1
@@ -19,6 +24,31 @@ const winCombos = [
 
 const cells = document.querySelectorAll('.cell');
 startGame();
+function toggleSound() {
+    isMuted = !isMuted; // Toggle the sound state
+
+    const soundIcon = document.getElementById('soundIcon');
+
+    // Change the icon based on the mute state
+    if (isMuted) {
+        soundIcon.classList.remove('fa-volume-up'); // Remove sound on icon
+        soundIcon.classList.add('fa-volume-mute'); // Add mute icon
+        // Mute all sounds
+        winSound.muted = true;
+        failSound.muted = true;
+        xSound.muted = true;
+        oSound.muted = true;
+    } else {
+        soundIcon.classList.remove('fa-volume-mute'); // Remove mute icon
+        soundIcon.classList.add('fa-volume-up'); // Add sound on icon
+        // Unmute all sounds
+        winSound.muted = false;
+        failSound.muted = false;
+        xSound.muted = false;
+        oSound.muted = false;
+    }
+}
+
 document.querySelector('.play-again').addEventListener('click',()=>{changestarter();startGame();})
 function changestarter()
 {
@@ -61,9 +91,17 @@ function turnClick(square) {
 	if (typeof origBoard[square.target.id] == 'number') {
 		turn(square.target.id, currentPlayer);
 		if (!checkWin(origBoard, currentPlayer) && !checkTie()) {
+
 			// Switch players after each turn
 			currentPlayer = currentPlayer === player1 ? player2 : player1;
 			document.querySelector('.turnxory').innerHTML = currentPlayer + ' ' + 'Turn';
+			if (currentPlayer === player1 ) {
+				xSound.play(); // Play 'X' sound
+			}
+			if(currentPlayer === player2)
+			{
+				oSound.play();
+			}
 		}
 	}
 }
@@ -108,16 +146,23 @@ function gameOver(gameWon) {
 		document.getElementById('player1wins').innerText = player1WinCount;
 		if (player1WinCount === 5) {
 			declarewingame("X Win the Game!");
+			winSound.play();
 		}
 	} else {
 		player2WinCount++;
 		document.getElementById('player2wins').innerText = player2WinCount;
 		if (player2WinCount === 5) {
 			declarewingame("O Win the Game!");
+			winSound.play();
 		}
 	}
 	if (player1WinCount < 2 && player2WinCount < 5) {
 		declareWinner(gameWon.player == player1 ? "X Wins!" : "O Wins!");
+		if (gameWon.player == player1) {
+            winSound.play(); // Play you win sound for intermediate wins
+        } else {
+            winSound.play(); // Play you lose sound for intermediate losses
+        }
 	}
 }
 
